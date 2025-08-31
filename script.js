@@ -1,6 +1,3 @@
-let humanScore = 0;
-let computerScore = 0;
-
 function getComputerChoice() {
   const num = Math.floor(Math.random() * 3)
   switch (num) {
@@ -33,3 +30,25 @@ function playRound (humanChoice, computerChoice) {
     return `You lose: ${computerChoice} beats ${humanChoice}.`;
   }
 }
+
+function playGame() {
+  let humanScore = 0;
+  let computerScore = 0;
+  
+  for (let game = 1; game < 5; game++ ) {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    result = playRound(humanSelection, computerSelection);
+    switch (result) {
+      case draw:
+    }
+  }
+  
+  if (humanScore > computerScore) {
+    console.log(`You won the game! Your score: ${humanScore}, computer score: ${computerScore}`);
+  } else {
+    console.log(`You lost the game! Your score: ${humanScore}, computer score: ${computerScore}`);
+  }
+}
+
+playGame();
