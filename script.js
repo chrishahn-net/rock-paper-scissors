@@ -17,17 +17,15 @@ function getHumanChoice () {
 
 function playRound (humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
-    return `Draw: you both chose ${humanChoice}`;
+    return "draw";
   } else if (
     (humanChoice === "rock" && computerChoice === "scissors") ||
     (humanChoice === "paper" && computerChoice === "rock") ||
     (humanChoice === "scissors" && computerChoice === "paper")
   ) {
-    humanScore++;
-    return `You win: ${humanChoice} beats ${computerChoice}.`;
+    return "win";
   } else {
-    computerScore++;
-    return `You lose: ${computerChoice} beats ${humanChoice}.`;
+    return "lose";
   }
 }
 
@@ -35,12 +33,23 @@ function playGame() {
   let humanScore = 0;
   let computerScore = 0;
   
-  for (let game = 1; game < 5; game++ ) {
+  for (let game = 0; game < 5; game++ ) {
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
-    result = playRound(humanSelection, computerSelection);
+    const result = playRound(humanSelection, computerSelection);
+    
     switch (result) {
-      case draw:
+      case "draw":
+        console.log(`Draw: you both chose ${humanSelection}.`);
+        break;
+      case "win":
+        humanScore++;
+        console.log(`You win: ${humanSelection} beats ${computerSelection}.`);
+        break;
+      case "lose":
+        computerScore++;
+        console.log(`You lose: ${computerSelection} beats ${humanSelection}.`);
+        break;
     }
   }
   
