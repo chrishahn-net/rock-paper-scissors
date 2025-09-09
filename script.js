@@ -1,5 +1,5 @@
 function getComputerChoice() {
-  const num = Math.floor(Math.random() * 3)
+  const num = Math.floor(Math.random() * 3);
   switch (num) {
     case 0:
       return "rock";
@@ -10,12 +10,12 @@ function getComputerChoice() {
   }
 }
 
-function getHumanChoice () {
+function getHumanChoice() {
   const choice = prompt("Rock, paper, or scissors?");
   return choice.toLowerCase();
 }
 
-function playRound (humanChoice, computerChoice) {
+function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
     return "draw";
   } else if (
@@ -32,12 +32,12 @@ function playRound (humanChoice, computerChoice) {
 function playGame() {
   let humanScore = 0;
   let computerScore = 0;
-  
-  for (let game = 0; game < 5; game++ ) {
+
+  for (let game = 0; game < 5; game++) {
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
     const result = playRound(humanSelection, computerSelection);
-    
+
     switch (result) {
       case "draw":
         console.log(`Draw: you both chose ${humanSelection}.`);
@@ -52,7 +52,7 @@ function playGame() {
         break;
     }
   }
-  
+
   if (humanScore > computerScore) {
     console.log(`You won the game! Your score: ${humanScore}, computer score: ${computerScore}`);
   } else {
