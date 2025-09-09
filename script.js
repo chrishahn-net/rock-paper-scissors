@@ -31,14 +31,7 @@ function increaseScore(roundResult, humanChoice, computerChoice) {
   }
 }
 
-  if (humanScore > computerScore) {
-    console.log(`You won the game! Your score: ${humanScore}, computer score: ${computerScore}`);
-  } else {
-    console.log(`You lost the game! Your score: ${humanScore}, computer score: ${computerScore}`);
-  }
-}
-
-const div = document.querySelector("#results");
+const resultsDiv = document.querySelector("#results");
 const btns = document.querySelectorAll("button");
 
 let humanScore = 0;
@@ -46,7 +39,9 @@ let computerScore = 0;
 
 for (const btn of btns) {
   btn.addEventListener("click", e => {
-    humanChoice = e.target.textContent.toLowerCase();
-    playRound(humanChoice, getComputerChoice());
+      const humanChoice = e.target.textContent.toLowerCase();
+      const computerChoice = getComputerChoice();
+      const roundResult = playRound(humanChoice, computerChoice);
+      resultsDiv.textContent = increaseScore(roundResult, humanChoice, computerChoice);
   });
 }
