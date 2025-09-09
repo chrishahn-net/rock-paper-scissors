@@ -1,13 +1,7 @@
 function getComputerChoice() {
-  const num = Math.floor(Math.random() * 3);
-  switch (num) {
-    case 0:
-      return "rock";
-    case 1:
-      return "paper";
-    case 2:
-      return "scissors";
-  }
+  const choices = ["rock", "paper", "scissors"];
+  const num = Math.floor(Math.random() * choices.length);
+  return choices[num];
 }
 
 function getHumanChoice() {
