@@ -18,29 +18,18 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-function playGame() {
-  let humanScore = 0;
-  let computerScore = 0;
-
-  // for (let game = 0; game < 5; game++) {
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-    const result = playRound(humanSelection, computerSelection);
-
-    switch (result) {
-      case "draw":
-        console.log(`Draw: you both chose ${humanSelection}.`);
-        break;
-      case "win":
-        humanScore++;
-        console.log(`You win: ${humanSelection} beats ${computerSelection}.`);
-        break;
-      case "lose":
-        computerScore++;
-        console.log(`You lose: ${computerSelection} beats ${humanSelection}.`);
-        break;
-    }
-  // }
+function increaseScore(roundResult, humanChoice, computerChoice) {
+  switch (roundResult) {
+    case "draw":
+      return `Draw: you both chose ${humanChoice}. Your score: ${humanScore}. Computer score: ${computerScore}.`;
+    case "win":
+      humanScore++;
+      return `You win: ${humanChoice} beats ${computerChoice}. Your score: ${humanScore}. Computer score: ${computerScore}.`;
+    case "lose":
+      computerScore++;
+      return `You lose: ${computerChoice} beats ${humanChoice}. Your score: ${humanScore}. Computer score: ${computerScore}.`;
+  }
+}
 
   if (humanScore > computerScore) {
     console.log(`You won the game! Your score: ${humanScore}, computer score: ${computerScore}`);
@@ -51,6 +40,9 @@ function playGame() {
 
 const div = document.querySelector("#results");
 const btns = document.querySelectorAll("button");
+
+let humanScore = 0;
+let computerScore = 0;
 
 for (const btn of btns) {
   btn.addEventListener("click", e => {
