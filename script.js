@@ -36,12 +36,21 @@ const btns = document.querySelectorAll("button");
 
 let humanScore = 0;
 let computerScore = 0;
+const maxScore = 5;
 
 for (const btn of btns) {
   btn.addEventListener("click", e => {
+    if (humanScore < maxScore && computerScore < maxScore) {
       const humanChoice = e.target.textContent.toLowerCase();
       const computerChoice = getComputerChoice();
       const roundResult = playRound(humanChoice, computerChoice);
       resultsDiv.textContent = increaseScore(roundResult, humanChoice, computerChoice);
+    } else {
+      if (humanScore === maxScore) {
+        resultsDiv.textContent = `You won! Final score: ${humanScore} to ${computerScore}.`;
+      } else {
+        resultsDiv.textContent = `You lost! Final score: ${humanScore} to ${computerScore}.`;
+      }
+    }
   });
 }
